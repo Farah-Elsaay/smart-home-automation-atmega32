@@ -46,7 +46,6 @@ Real-time status is displayed on a 16x2 LCD.
 
 ---
 
-
 ---
 
 ## 🚀 Demo  
@@ -67,5 +66,5 @@ flowchart TD
     MCU --> LEDs[RGB LEDs]
     MCU --> Motor[DC Motor + H-Bridge]
     MCU --> Buzzer[Buzzer]
- 
+
 
