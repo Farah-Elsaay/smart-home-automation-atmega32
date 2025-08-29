@@ -54,7 +54,9 @@ Real-time status is displayed on a 16x2 LCD.
 🔥 [Flame Sensor Test](https://youtu.be/cD3n-Bz7liM)  
 
 ---
-
+## 🛠 Skills
+Embedded C • ATmega32 • ADC • PWM • LCD Interfacing • Sensor Integration • DC Motor Control • Proteus Simulation • Embedded Systems
+---
 ## ⚙️ System Architecture  
 
 ```mermaid
