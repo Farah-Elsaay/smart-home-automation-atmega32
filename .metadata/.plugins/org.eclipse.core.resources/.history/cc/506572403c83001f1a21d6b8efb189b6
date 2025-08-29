@@ -1,0 +1,17 @@
+/*
+ * led.c
+ *
+ *  Created on: 5 Oct 2024
+ *      Author: farah
+ */
+
+#include"led.h"
+#include"gpio.h"
+
+void LEDS_init(void)
+{
+	GPIO_setupPinDirection( RED_LED_PORT_ID, RED_LED_PIN_ID , PIN_OUTPUT);
+	GPIO_setupPinDirection( GREEN_LED_PORT_ID, GREEN_LED_PIN_ID , PIN_OUTPUT);
+	GPIO_setupPinDirection( BLUE_LED_PORT_ID, BLUE_LED_PIN_ID , PIN_OUTPUT);
+
+}

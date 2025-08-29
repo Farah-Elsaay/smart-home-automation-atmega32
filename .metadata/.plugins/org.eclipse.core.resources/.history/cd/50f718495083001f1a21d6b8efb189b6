@@ -1,0 +1,49 @@
+/*
+ * proj_main.c
+ *
+ *  Created on: 5 Oct 2024
+ *      Author: farah
+ */
+#include<util/delay.h>
+#include"lcd.h"
+#include"led.h"
+#include"buzzer.h"
+#include"dc_motor.h"
+#include"flame_sensor.h"
+#include"lm35_sensor.h"
+#include"ldr_sensor.h"
+#include"adc.h"
+#include "pwm.h"
+
+void lcd_display(void)
+{
+	LCD_displayStringRowColumn(0,4,"FAN IS");
+	if (LM35_getTemperature()<25)
+	{
+		LCD_displayStringRowColumn(0,5,"ON");
+	}
+	else
+	{
+		LCD_displayStringRowColumn(0,5,"OFF");
+	}
+	LCD_displayStringRowColumn(1,0,"TEMP=   C");
+	LCD_moveCursor(1,6);
+	LCD_intgerToString(LM35_getTemperature());
+	LCD_displayStringRowColumn(1,10,"LDR=");
+	LCD_intgerToString(LDR_getLightIntensity());
+}
+
+int main(void)
+{
+	ADC_init();
+	PWM_Timer0_Start();
+	LCD_init();
+	LEDS_init();
+	DcMotor_Init();
+	FlameSensor_init();
+	Buzzer_init();
+	while(1)
+	{
+		lcd_display();
+	}
+}

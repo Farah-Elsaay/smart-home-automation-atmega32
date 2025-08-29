@@ -1,0 +1,72 @@
+/*
+ * proj_main.c
+ *
+ *  Created on: 5 Oct 2024
+ *      Author: farah
+ */
+#include<util/delay.h>
+#include"lcd.h"
+#include"led.h"
+#include"buzzer.h"
+#include"dc_motor.h"
+#include"flame_sensor.h"
+#include"lm35_sensor.h"
+#include"ldr_sensor.h"
+#include"adc.h"
+#include "pwm.h"
+char temp;
+
+void lcd_display(void)
+{
+	LCD_displayStringRowColumn(0,2,"FAN IS ON");
+
+
+	LCD_displayStringRowColumn(1,0,"LDR=");
+	char temp2=LDR_getLightIntensity();
+	if(temp2 >= 100)
+	{
+		LCD_intgerToString(temp2);
+		LCD_displayCharacter('%');
+	}
+	else
+	{
+		LCD_intgerToString(temp2);
+		/* In case the digital value is two or one digits print space in the next digit place */
+		LCD_displayCharacter(' ');
+		LCD_displayCharacter('%');
+		LCD_displayCharacter(' ');
+	}
+
+}
+void temp_lcd_display(void)
+{
+	 LCD_displayStringRowColumn(1,8,"TEMP=  C");
+	 temp = LM35_getTemperature();
+	/* Display the temperature value every time at same position */
+	 LCD_moveCursor(1,13);
+	 LCD_intgerToString(temp);
+}
+
+int main(void)
+{
+	ADC_init();
+	PWM_Timer0_Start(50);
+	LCD_init();
+	LEDS_init();
+	DcMotor_Init();
+	FlameSensor_init();
+	Buzzer_init();
+    temp=LM35_getTemperature();
+    lcd_display();
+    temp_lcd_display();
+	while(1)
+	{
+        lcd_display();
+
+        if(LM35_getTemperature()!=temp)
+        {
+        	temp_lcd_display();
+        }
+
+	}
+}

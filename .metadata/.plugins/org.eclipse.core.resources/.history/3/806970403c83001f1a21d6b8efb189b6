@@ -1,0 +1,61 @@
+/*
+ * led.h
+ *
+ *  Created on: 5 Oct 2024
+ *      Author: farah
+ */
+
+#ifndef LED_H_
+#define LED_H_
+
+#include "std_types.h"
+
+#define POSITIVE_LOGIC
+
+/*******************************************************************************
+ *                                Definitions                                  *
+ *******************************************************************************/
+#ifdef POSITIVE_LOGIC /*POSITIVE LOGIC ON=1,OFF=0*/
+typedef enum
+{
+	LED_OFF,LED_ON
+}LED_STATE;
+
+#else /*NEGATIVE LOGIC ON=0,OFF=1*/
+typedef enum
+{
+	LED_ON,LED_OFF
+}LED_STATE;
+#endif
+
+#define RED_LED_PORT_ID                 PORTB_ID
+#define RED_LED_PIN_ID                  PIN5_ID
+
+#define GREEN_LED_PORT_ID                 PORTB_ID
+#define GREEN_LED_PIN_ID                  PIN6_ID
+
+#define BLUE_LED_PORT_ID                 PORTB_ID
+#define BLUE_LED_PIN_ID                  PIN7_ID
+
+/*******************************************************************************
+ *                               Types Declaration                             *
+ *******************************************************************************/
+typedef enum
+{
+	RED_LED,GREEN_LED,BLUE_LED
+}LED_ID;
+
+#ifdef POSITIVE_LOGIC /*POSITIVE LOGIC ON=1,OFF=0*/
+typedef enum
+{
+	LED_OFF,LED_ON
+}LED_STATE;
+
+#else /*NEGATIVE LOGIC ON=0,OFF=1*/
+typedef enum
+{
+	LED_ON,LED_OFF
+}LED_STATE;
+#endif
+
+#endif /* LED_H_ */
