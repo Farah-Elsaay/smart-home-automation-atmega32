@@ -18,7 +18,7 @@ Real-time status is displayed on a 16x2 LCD.
   - <15% → 3 LEDs ON (RGB)  
   - 16–50% → Red + Green ON  
   - 51–70% → Red ON  
-   >70% → All OFF  
+  - >70% → All OFF  
 
 - 🌡️ **Fan Speed Control** with LM35 + PWM  
   - <25°C → Fan OFF  
